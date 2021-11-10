@@ -17,7 +17,6 @@ const TableHeader = () => {
                     <th scope="col">Action</th>
                  </tr>
              </thead>
-
     );
   };
 
@@ -51,11 +50,29 @@ const TableHeader = () => {
 
   const TableAction = (props) => {
     return (
-      <button type="button" className="btn btn-danger" onClick= {ShowInfo}>
-        Info
+      <button type="button" className="btn btn-primary" onClick= {ShowStudentDetails}>
+        Details
       </button>
     );
   };
+
+
+  const ShowStudentDetails = () => {
+    const [showDetails, setShowDetails] = useState(false);
+    const student = {id: '', firstName: '', lastName: '', age: '', 
+    birthDate: '', country: '', city: ''};
+      return(
+        <div className="container">
+            <b>Student Id: + {student.id}</b>
+            <b>Student Name: + {student.firstName}+{student.lastName}</b>
+            <b>Student Birthdate: + {student.birthDate}</b>
+            <b>Student Nationality: + {student.country}</b>
+            <button className="btn btn-outline-primary btn-sm">Hide Details</button>
+        </div>
+      )
+  };
+
+  
 
 const DataTable = () => {
     
