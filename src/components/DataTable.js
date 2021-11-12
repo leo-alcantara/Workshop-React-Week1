@@ -73,9 +73,10 @@ const DataTable = () => {
                 console.log(student);
             };
         return (
-          <button type="button" className="btn btn-primary" onClick= {showData}>
-            Details
-          </button>
+            <div>
+          <button type="button" className="btn btn-primary" onClick= {showData}>Details</button>
+           <button type="button" className="action btn btn-outline-dark" onClick={() => {setShowDetails(false); setStudent({student})}}>Hide Details</button>
+           </div>
         );      
     };
 
