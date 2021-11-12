@@ -68,7 +68,7 @@ const TableAction = (props) => {
     );
   };
 
-  
+
   const ShowStudentDetails = () => {
       if(showDetails){
         return(
@@ -81,12 +81,11 @@ const TableAction = (props) => {
                     <p className="card-text">ID: {student.id}</p>
                     <p className="card-text">Birthdate: {student.birthDate}</p>
                     <p className="card-text">Nationality: {student.country}</p>
-                    <p className="card-text">City: {student.city}</p>
-                  
+                    <p className="card-text">City: {student.city}</p>                 
                 </div>
-  <div className="card-footer">
-      <button type="button" className="btn btn-outline-primary" onClick={()=> {setShowDetails(false); setStudent({student})}}>Hide details</button>
-  </div>
+                <div className="card-footer">
+                    <button type="button" className="btn btn-outline-primary" onClick={()=> {setShowDetails(false); setStudent({student})}}>Hide details</button>
+                </div>
             </div> 
       ); 
       } else {
