@@ -68,6 +68,7 @@ const TableAction = (props) => {
     );
   };
 
+  
   const ShowStudentDetails = () => {
       if(showDetails){
         return(

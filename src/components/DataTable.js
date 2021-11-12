@@ -1,86 +1,14 @@
 import React, { useEffect, useState } from 'react';
 
-const studentList = [];
-
-const TableHeader = () => {
-    return (
-   
-            <thead>
-                 <tr>
-                    <th scope="col">ID</th>
-                    <th scope="col">First Name</th>
-                    <th scope="col">Last Name</th>
-                    <th scope="col">Age</th>
-                    <th scope="col">Birthdate</th>
-                    <th scope="col">Country</th>
-                    <th scope="col">City</th>
-                    <th scope="col">Action</th>
-                 </tr>
-             </thead>
-    );
-  };
-
-  const TableRow = (props) => {
-
-      return (
-        <tbody>
-            {
-                props.studentList.map((s)=> (<tr>
-                    <td>{s.id}</td>
-                    <td>{s.firstName}</td>
-                    <td>{s.lastName}</td>
-                    <td>{s.age}</td>
-                    <td>{s.birthDate}</td>
-                    <td>{s.country}</td>
-                    <td>{s.city}</td>
-                    <td>{TableAction}</td>
-                    </tr>))
-            }             
-         </tbody>
-      );
-  };
-
-  const ShowInfo = (props) => {
-      return(
-<div>
-    {props.info && <div className="alert alert_info">{props.info}</div>}
-</div>
-      )
-  };
-
-  const TableAction = (props) => {
-    return (
-      <button type="button" className="btn btn-primary" onClick= {ShowStudentDetails}>
-        Details
-      </button>
-    );
-  };
-
-
-  const ShowStudentDetails = () => {
-    const [showDetails, setShowDetails] = useState(false);
-    const student = {id: '', firstName: '', lastName: '', age: '', 
-    birthDate: '', country: '', city: ''};
-      return(
-        <div className="container">
-            <b>Student Id: + {student.id}</b>
-            <b>Student Name: + {student.firstName}+{student.lastName}</b>
-            <b>Student Birthdate: + {student.birthDate}</b>
-            <b>Student Nationality: + {student.country}</b>
-            <button className="btn btn-outline-primary btn-sm">Hide Details</button>
-        </div>
-      )
-  };
-
-  
-
 const DataTable = () => {
-    
+
+    const studentList = [];
 
     const initialData = {id: '', firstName: '', lastName: '', age: '', 
     birthDate: '', country: '', city: ''};
 
     const [student, setStudent] = useState(initialData);
+    const [showDetails, setShowDetails] = useState(false);
     
     let student1 = setStudent({id: '1', firstName: 'Leo', lastName: 'Alcantara', age: '43', 
     birthDate: '1978-03-14', country: 'Brazil', city: 'Sao Paulo'});
@@ -99,15 +27,97 @@ const DataTable = () => {
     studentList.push(student2);
     studentList.push(student3);
     studentList.push(student4);
-   
 
+    const TableHeader = () => {
+        return (
+       
+                <thead>
+                     <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">First Name</th>
+                        <th scope="col">Last Name</th>
+                        <th scope="col">Age</th>
+                        <th scope="col">Birthdate</th>
+                        <th scope="col">Country</th>
+                        <th scope="col">City</th>
+                        <th scope="col">Action</th>
+                     </tr>
+                 </thead>
+        );
+      };
+
+    const TableRow = (props) => {
+
+        return (
+          <tbody>
+              {
+                  props.studentList.map((s)=> (<tr key = {s.id}>
+                      <td>{s.id}</td>
+                      <td>{s.firstName}</td>
+                      <td>{s.lastName}</td>
+                      <td>{s.age}</td>
+                      <td>{s.birthDate}</td>
+                      <td>{s.country}</td>
+                      <td>{s.city}</td>
+                      <td><TableAction s={student}/></td>
+                      </tr>))
+              }             
+           </tbody>
+        );
+    };
+
+    const TableAction = (props) => {
+        
+            const showData = () => {
+                setShowDetails(true);
+                console.log("Show Data", props.student);
+                setStudent(props.student);        
+            };
+
+        return (
+          <button type="button" className="btn btn-primary" onClick= {showData}>
+            Details
+          </button>
+        );      
+    };
+
+    
+    
+
+  const ShowStudentDetails = () => {
+      if(showDetails){
+          return(
+              <div className= "card">
+                  <div className= "card-header bg-info text-white">
+                      Student Information
+                  </div>
+                  <div className = "card-body">
+                    <h5 className="card-title">Student Name: {student.firstName} {student.lastName}</h5>
+                    <p className="card-text">ID: {student.id}</p>
+                    <p className="card-text">Birthdate: {student.birthDate}</p>
+                    <p className="card-text">Nationality: {student.country}</p>
+                    <p className="card-text">City: {student.city}</p> 
+                </div>
+                <div className="card-footer">
+                    <button type="button" className="btn btnoutline-dark" onClick={() => {setShowDetails(false); setStudent({student})}}>Hide Details</button>
+                </div>
+              </div>
+          );
+      } else {
+        return("");
+      }
+  };
+    
+  //DataTable return statement
     return (
         <div className="container">
            
-            <table className="table">
+            <table className="table table-striped">
            <TableHeader/>
            <TableRow studentList= {studentList}/>
            </table>
+           <br/>
+           <ShowStudentDetails/>
         </div>
     );
 };
