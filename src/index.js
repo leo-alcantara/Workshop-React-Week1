@@ -6,4 +6,4 @@ import DataTable2 from "./components/DataTable2";
 
 
 
-ReactDOM.render(<DataTable2/>, document.getElementById("main"));
+ReactDOM.render(<DataTable/>, document.getElementById("main"));

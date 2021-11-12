@@ -13,13 +13,13 @@ const DataTable = () => {
     let student1 = setStudent({id: '1', firstName: 'Leo', lastName: 'Alcantara', age: '43', 
     birthDate: '1978-03-14', country: 'Brazil', city: 'Sao Paulo'});
 
-    let student2 = setStudent({id: '2', firstName: 'Sanya', lastName: 'Iogi', age: '35', 
+    let student2 = setStudent({id: '2', firstName: 'Sanya', lastName: 'Ogunjobi', age: '35', 
     birthDate: '1986-06-12', country: 'Nigeria', city: 'Abuja'});
 
-    let student3 = setStudent({id: '3', firstName: 'Charles', lastName: 'Hadush', age: '32', 
+    let student3 = setStudent({id: '3', firstName: 'Charles', lastName: 'Rudahusha', age: '32', 
     birthDate: '1989-11-11', country: 'Burundi', city: 'Gitega'});
 
-    let student4 = setStudent({id: '4', firstName: 'Adrian', lastName: 'Svensson', age: '43', 
+    let student4 = setStudent({id: '4', firstName: 'Adrian', lastName: 'Nilsson', age: '43', 
     birthDate: '1978-10-07', country: 'Sweden', city: 'Halmstad'});
    
 
